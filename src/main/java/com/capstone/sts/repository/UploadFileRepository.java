@@ -2,9 +2,10 @@ package com.capstone.sts.repository;
 
 import com.capstone.sts.domain.UploadFile;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import jakarta.persistence.EntityManager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import javax.persistence.EntityManager;
 
 @Repository
 @RequiredArgsConstructor

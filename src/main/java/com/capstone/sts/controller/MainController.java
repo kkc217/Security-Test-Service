@@ -3,19 +3,20 @@ package com.capstone.sts.controller;
 import com.capstone.sts.domain.UploadFile;
 import com.capstone.sts.service.AwsS3Service;
 import com.capstone.sts.service.UploadFileService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.zeroturnaround.exec.ProcessExecutor;
 
-import java.io.*;
-import java.util.Objects;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 import static com.capstone.sts.constraint.PathConst.UPLOAD_FILE_DIRECTORY;
