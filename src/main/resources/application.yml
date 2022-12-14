@@ -1,0 +1,55 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${mysql.datasource.url}
+    username: ${mysql.datasource.username}
+    password: ${mysql.datasource.password}
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    url: ${mysql.datasource.url}
+    user: ${mysql.datasource.username}
+    password: ${mysql.datasource.password}
+    baseline-version: 0
+
+  devtools:
+    livereload:
+      enabled: true
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+cloud:
+  aws:
+    credentials:
+      access-key: ${aws.credentials.accesskey}
+      secret-key: ${aws.credentials.secretkey}
+    region:
+      static: ${aws.region.static}
+      auto: false
+    stack:
+      auto: false
+    s3:
+      bucket: ${aws.s3.bucket}
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/views/
+#      suffix: .jsp

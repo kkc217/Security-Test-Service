@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function checkFile() {
+            if (!document.getElementById("uploadFile").value) {
+                alert("검사할 파일을 추가해 주세요.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form method="post" action="/result" enctype="multipart/form-data" onsubmit="return checkFile()">
+        <input type="file" id="uploadFile" name="file">
+        <input type="submit" value="검사하기">
+    </form>
+</body>
+</html>
