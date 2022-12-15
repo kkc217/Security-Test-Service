@@ -72,7 +72,7 @@ public class MainController {
         History history = new History(uploadFile, output);
         historyService.saveHistory(history);
 
-        List<Cookie> cookieList = Arrays.asList(request.getCookies());
+        List<Cookie> cookieList = request.getCookies() == null ? new ArrayList<>() : Arrays.asList(request.getCookies());
 
         List<HistoryDto> historyList = new ArrayList<>();
         for (int i = cookieList.size() - 1; i >= 0; i--) {
