@@ -12,11 +12,7 @@ import java.util.concurrent.TimeoutException;
 public class HomeController {
 
     @RequestMapping("/")
-    public String home() throws IOException, InterruptedException, TimeoutException {
-//        String output = new ProcessExecutor().command("python3", "./model/service.py", "./model/sample_test_files/0QqWIUsiyj3AaPwJD81S.bytes")
-//                .readOutput(true).execute()
-//                .outputUTF8();
-//        System.out.println(output);
+    public String home() {
         return "home";
     }
 
