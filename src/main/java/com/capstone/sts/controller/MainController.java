@@ -4,6 +4,7 @@ import com.capstone.sts.domain.History;
 import com.capstone.sts.domain.UploadFile;
 import com.capstone.sts.dto.HistoryDto;
 import com.capstone.sts.service.AwsS3Service;
+import com.capstone.sts.service.FamilyService;
 import com.capstone.sts.service.HistoryService;
 import com.capstone.sts.service.UploadFileService;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,8 @@ public class MainController {
 
     private final HistoryService historyService;
 
+    private final FamilyService familyService;
+
     private final AwsS3Service awsS3Service;
 
     @PostMapping("/result")
@@ -65,7 +68,8 @@ public class MainController {
                 uploadFile);
         String output = new ProcessExecutor().command("python3", "./model/service.py", path)
                 .readOutput(true).execute()
-                .outputUTF8();
+                .outputUTF8()
+                .trim();
         request.setAttribute("result", output);
         model.addAttribute("result", output);
 
@@ -84,10 +88,13 @@ public class MainController {
         }
 
         model.addAttribute("historyList", historyList);
-        System.out.println("history" + cookieList.size());
         Cookie cookie = new Cookie("history" + cookieList.size(), history.getId().toString());
         cookie.setMaxAge(10 * 60);
         response.addCookie(cookie);
+
+        String familyInfo = familyService.getFamilyInfo(output.trim());
+        model.addAttribute("familyInfo", familyInfo);
+
         return "result";
     }
 
