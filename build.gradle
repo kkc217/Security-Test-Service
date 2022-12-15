@@ -41,6 +41,8 @@ dependencies {
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 	implementation 'com.vladmihalcea:hibernate-types-52:2.20.0'
+
+	implementation 'org.zeroturnaround:zt-exec:1.12'
 //	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
 //	annotationProcessor "com.querydsl:querydsl-apt:5.0.0:jakarta"
 //	annotationProcessor "jakarta.annotation:jakarta.annotation-api"
@@ -55,7 +57,7 @@ dependencies {
 //	implementation 'com.googlecode.json-simple:json-simple:1.1.1'
 //	implementation 'com.vladmihalcea:hibernate-types-52:2.20.0'
 
-	compileOnly 'org.zeroturnaround:zt-exec:1.12'
+//	compileOnly 'org.zeroturnaround:zt-exec:1.12'
 	compileOnly 'org.projectlombok:lombok'
 	compileOnly 'org.springframework.boot:spring-boot-devtools'
 
